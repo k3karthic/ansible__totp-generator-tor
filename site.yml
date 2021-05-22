@@ -1,0 +1,12 @@
+---
+- name: install and configure nginx
+  hosts: all
+  become: true
+  roles:
+    - nginx
+
+- name: install and configure tor
+  hosts: all
+  become: true
+  roles:
+    - tor

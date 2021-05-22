@@ -1,0 +1,26 @@
+---
+- name: install dependencies
+  community.general.pkgng:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - nginx
+    - wget
+
+- name: copy deploy script
+  ansible.builtin.copy:
+    src: deploy_totp_tor.sh
+    dest: /usr/local/bin/deploy_totp_tor.sh
+    owner: root
+    group: wheel
+    mode: "0755"
+
+- name: enable nginx on boot
+  community.general.sysrc:
+    name: nginx_enable
+    value: "YES"
+
+- name: restart nginx
+  ansible.builtin.service:
+    name: nginx
+    state: restarted

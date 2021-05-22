@@ -1,0 +1,17 @@
+---
+plugin: gcp_compute
+
+projects:
+    - k3karthic-gcloud
+
+auth_kind: application
+
+zones:
+    - us-central1-a
+
+filters:
+    - labels.os = "freebsd" AND labels.tor_service = "yes"
+
+keyed_groups:
+    - prefix: gcp
+      key: metadata

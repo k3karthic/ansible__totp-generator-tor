@@ -1,0 +1,72 @@
+---
+- name: install dependencies
+  community.general.pkgng:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - tor
+
+- name: randomize IP IDs
+  ansible.posix.sysctl:
+    name: net.inet.ip.random_id
+    value: '1'
+    state: present
+    reload: true
+
+- name: create hidden dir
+  ansible.builtin.file:
+    path: /var/db/tor/hidden_service__totp
+    state: directory
+    owner: _tor
+    group: _tor
+    mode: "0700"
+
+- name: create hidden dir auth clients
+  ansible.builtin.file:
+    path: /var/db/tor/hidden_service__totp/authorized_clients
+    state: directory
+    owner: _tor
+    group: _tor
+    mode: "0700"
+
+- name: copy public key
+  ansible.builtin.copy:
+    src: hidden_service__totp/hs_ed25519_public_key
+    dest: /var/db/tor/hidden_service__totp/hs_ed25519_public_key
+    owner: _tor
+    group: _tor
+    mode: "0600"
+
+- name: copy secret key
+  ansible.builtin.copy:
+    src: hidden_service__totp/hs_ed25519_secret_key
+    dest: /var/db/tor/hidden_service__totp/hs_ed25519_secret_key
+    owner: _tor
+    group: _tor
+    mode: "0600"
+
+- name: cofigure tor
+  ansible.builtin.copy:
+    src: torrc
+    dest: /usr/local/etc/tor/torrc
+    owner: root
+    group: wheel
+    mode: "0644"
+
+- name: enable tor on boot
+  community.general.sysrc:
+    name: tor_enable
+    value: "YES"
+
+- name: restart tor
+  ansible.builtin.service:
+    name: tor
+    state: restarted
+
+- name: configure newsyslog
+  ansible.builtin.copy:
+    src: newsyslog.conf
+    dest: /etc/newsyslog.conf.d/tor.conf
+    owner: root
+    group: wheel
+    mode: "0644"
