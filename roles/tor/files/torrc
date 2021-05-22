@@ -71,7 +71,7 @@ Log notice file /var/log/tor/notices.log
 ## address y:z.
 
 HiddenServiceDir /var/db/tor/hidden_service__totp/
-HiddenServicePort 80 127.0.0.1:8080
+HiddenServicePort 80 127.0.0.1:80
 
 #HiddenServiceDir /var/db/tor/other_hidden_service/
 #HiddenServicePort 80 127.0.0.1:80
