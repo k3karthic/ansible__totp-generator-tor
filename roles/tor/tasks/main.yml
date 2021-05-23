@@ -5,6 +5,7 @@
     state: latest
   with_items:
     - tor
+    - obfs4proxy-tor
 
 - name: randomize IP IDs
   ansible.posix.sysctl:

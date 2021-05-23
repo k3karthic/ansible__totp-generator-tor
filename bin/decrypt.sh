@@ -13,3 +13,4 @@ for f in $FILES; do
 done
 
 decrypt "roles/tor/files/hidden_service__totp/hs_ed25519_secret_key"
+decrypt "roles/tor/files/torrc"

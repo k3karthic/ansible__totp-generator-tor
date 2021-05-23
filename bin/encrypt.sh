@@ -20,3 +20,4 @@ for f in $FILES; do
 done
 
 encrypt "roles/tor/files/hidden_service__totp/hs_ed25519_secret_key"
+encrypt "roles/tor/files/torrc"

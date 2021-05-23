@@ -1,3 +1,4 @@
 ssh/google
 ssh/google.pub
 roles/tor/files/hidden_service__totp/hs_ed25519_secret_key
+roles/tor/files/torrc

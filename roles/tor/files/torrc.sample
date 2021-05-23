@@ -12,6 +12,14 @@
 ## Tor will look for this file in various places based on your platform:
 ## https://www.torproject.org/docs/faq#torrc
 
+## Connect using obfs4 bridge
+ClientTransportPlugin obfs4 exec /usr/local/bin/obfs4proxy
+UseBridges 1
+## TODO: Replace with Tor obfs4 bridges
+Bridge obfs4 IP:PORT FINGERPRINT cert=CERT iat-mode=0
+Bridge obfs4 IP:PORT FINGERPRINT cert=CERT iat-mode=2
+Bridge obfs4 IP:PORT FINGERPRINT cert=CERT iat-mode=1
+
 ## Tor opens a SOCKS proxy on port 9050 by default -- even if you don't
 ## configure one below. Set "SOCKSPort 0" if you plan to run Tor only
 ## as a relay, and not make any local application connections yourself.
