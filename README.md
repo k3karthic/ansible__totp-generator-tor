@@ -26,11 +26,11 @@ All public FreeBSD instances are assumed to have a label `os: freebsd` and `tor_
 
 ## Playbook Configuration
 
-1. Create `inventory/google.gcp_compute.yml` based on `inventory/google.gcp_compute.yml.sample`
-    1. specify the project id
+1. Create `inventory/google.gcp_compute.yml` based on `inventory/google.gcp_compute.yml.sample`,
+    1. specify the project id.
     1. specify the zone where you have deployed your server on Google Cloud.
-    1. Configure the authentication
-1. Set username and ssh authentication in `inventory/group_vars/`
+    1. Configure the authentication.
+1. Set username and ssh authentication in `inventory/group_vars/`.
 1. Create `roles/tor/files/torrc` from `roles/tor/files/torrc.sample` by adding obfs4 Tor bridges.
 
 ### Hidden Service Initialization
