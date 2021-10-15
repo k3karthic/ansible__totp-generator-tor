@@ -1,6 +1,6 @@
 # Ansible - Deploy TOTP Generator as a Tor Onion Service
 
-The Ansible playbook in this repository creates a bash script which can deploy [totp-generator-web](https://github.com/k3karthic/totp-generator-web) as a [Tor Onion Service](https://community.torproject.org/onion-services/).
+The Ansible playbook in this repository creates a bash script which can deploy [totp.cf.maverickgeek.xyz](https://totp.cf.maverickgeek.xyz) as a [Tor Onion Service](https://community.torproject.org/onion-services/).
 
 Demo: [http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion](http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion)
 
@@ -8,6 +8,11 @@ The playbook assumes the instance runs in Google Cloud using the terraform scrip
 * [https://github.com/k3karthic/terraform__gcloud-instance](https://github.com/k3karthic/terraform__gcloud-instance)
 
 The repository also includes `bin/deploy.sh` that executes `deploy_totp_tor.sh` on the instance using an Ansible ad-hoc task.
+
+## Code Mirrors
+
+* GitHub: [github.com/k3karthic/ansible__totp-generator-tor](https://github.com/k3karthic/ansible__totp-generator-tor)
+* Codeberg: [codeberg.org/k3karthic/ansible__totp-generator-tor](https://codeberg.org/k3karthic/ansible__totp-generator-tor) 
 
 ## Requirements
 
@@ -24,7 +29,7 @@ ansible-galaxy collection install google.cloud
 
 This playbook uses the Google [Ansible Inventory Plugin](https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_inventory.html) to populate public FreeBSD instances dynamically.
 
-All public FreeBSD instances are assumed to have a label `os: freebsd` and `tor_service: yes`.
+The target FreeBSD instances are assumed to have the labels `os: freebsd` and `tor_service: yes`.
 
 ## Playbook Configuration
 
@@ -33,11 +38,11 @@ All public FreeBSD instances are assumed to have a label `os: freebsd` and `tor_
     1. specify the zone where you have deployed your server on Google Cloud.
     1. Configure the authentication.
 1. Set username and ssh authentication in `inventory/group_vars/`.
-1. Create `roles/tor/files/torrc` from `roles/tor/files/torrc.sample` by adding obfs4 Tor bridges.
+1. Create `roles/tor/files/torrc` from `roles/tor/files/torrc.sample`.
 
-### Hidden Service Initialization
+### Onion Service Initialization
 
-A hidden service requires an ed25519 keypair to be generated; the keypair is used to derive the hostname for the service. One can create a vanity v3 onion address using [cathugger/mkp224o](https://github.com/cathugger/mkp224o).
+An onion service requires an ed25519 keypair to be generated; the keypair is used to derive the hostname for the service. One can create a vanity onion hostname using [cathugger/mkp224o](https://github.com/cathugger/mkp224o).
 
 Once a keypair has been generated; copy `hostname`, `hs_ed25519_public_key` and `hs_ed25519_secret_key` into `roles/tor/files/hidden_service__totp`.
 
@@ -50,9 +55,9 @@ Run the playbook using the following command,
 
 ## Encryption
 
-Sensitive files like the hidden service private key and SSH private keys are encrypted before being stored in the repository.
+Sensitive files like the onion service and SSH private keys are encrypted before being stored in the repository.
 
-You must add the unencrypted file paths to `.gitignore`.
+The unencrypted file paths must be added to `.gitignore`.
 
 Use the following command to decrypt the files after cloning the repository,
 
