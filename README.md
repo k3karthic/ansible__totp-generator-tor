@@ -5,8 +5,9 @@ This playbook creates a bash script which can deploy [totp.cf.maverickgeek.xyz](
 Demo: [http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion](http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion)
 
 **Assumption:** The instance runs in Google Cloud using the terraform script below,
-* GitHub: [github.com/k3karthic/terraform__gcloud-instance](https://github.com/k3karthic/terraform__gcloud-instance)
-* Codeberg: [codeberg.org/k3karthic/terraform__gcloud-instance](https://codeberg.org/k3karthic/terraform__gcloud-instance)
+* terraform__gcloud-instance
+    * GitHub: [github.com/k3karthic/terraform__gcloud-instance](https://github.com/k3karthic/terraform__gcloud-instance)
+    * Codeberg: [codeberg.org/k3karthic/terraform__gcloud-instance](https://codeberg.org/k3karthic/terraform__gcloud-instance)
 
 `bin/deploy.sh` uses an Ansible ad-hoc task to run `deploy_totp_tor.sh` on the instance.
 
