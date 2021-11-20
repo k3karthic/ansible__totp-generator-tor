@@ -18,7 +18,7 @@ Demo: [http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion](ht
 
 ## Requirements
 
-Install the following Ansible modules before running the playbook,
+Install the following before running the playbook,
 ```
 ansible-galaxy collection install community.general
 ansible-galaxy collection install ansible.posix
