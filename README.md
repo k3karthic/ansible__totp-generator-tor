@@ -20,11 +20,10 @@ Demo: [http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion](ht
 
 Install the following before running the playbook,
 ```
-ansible-galaxy collection install community.general
-ansible-galaxy collection install ansible.posix
-
-pip install google-auth requests
-ansible-galaxy collection install google.cloud
+$ ansible-galaxy collection install community.general
+$ ansible-galaxy collection install ansible.posix
+$ pip install google-auth requests
+$ ansible-galaxy collection install google.cloud
 ```
 
 ## Dynamic Inventory
@@ -55,7 +54,7 @@ After generating a keypair copy the following into `roles/tor/files/hidden_servi
 
 Run the playbook using the following command,
 ```
-./bin/apply.sh
+$ ./bin/apply.sh
 ```
 
 ## Encryption
@@ -65,11 +64,11 @@ Encrypt sensitive files (onion service and SSH private keys) before saving them.
 Use the following command to decrypt the files after cloning the repository,
 
 ```
-./bin/decrypt.sh
+$ ./bin/decrypt.sh
 ```
 
 Use the following command after running terraform to update the encrypted files,
 
 ```
-./bin/encrypt.sh <gpg key id>
+$ ./bin/encrypt.sh <gpg key id>
 ```
