@@ -1,10 +1,10 @@
-# Ansible - Deploy TOTP Generator as a Tor Onion Service
+# Ansible — Deploy TOTP Generator as a Tor Onion Service
 
 This playbook creates a bash script which can deploy [totp.cf.maverickgeek.xyz](https://totp.cf.maverickgeek.xyz) as a [Tor Onion Service](https://community.torproject.org/onion-services/).
 
 Demo: [http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion](http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion)
 
-**Assumption:** The instance runs in Google Cloud using the terraform script below,
+**Assumption:** The instance runs in Google Cloud using the Terraform script below,
 * terraform__gcloud-instance
     * GitHub: [github.com/k3karthic/terraform__gcloud-instance](https://github.com/k3karthic/terraform__gcloud-instance)
     * Codeberg: [codeberg.org/k3karthic/terraform__gcloud-instance](https://codeberg.org/k3karthic/terraform__gcloud-instance)
@@ -35,8 +35,8 @@ The target FreeBSD instances must have the labels `os: freebsd` and `tor_service
 ## Playbook Configuration
 
 1. Create `inventory/google.gcp_compute.yml` based on `inventory/google.gcp_compute.yml.sample`,
-    1. specify the project id.
-    1. specify the zone where you have deployed your server on Google Cloud.
+    1. Specify the project ID.
+    1. Specify the zone where you have deployed your server on Google Cloud.
     1. Configure the authentication.
 1. Set username and SSH authentication in `inventory/group_vars/`.
 1. Create `roles/tor/files/torrc` from `roles/tor/files/torrc.sample`.
