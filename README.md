@@ -1,6 +1,6 @@
 # Ansible — Deploy TOTP Generator as a Tor Onion Service
 
-This playbook creates a bash script which can deploy [totp.cf.maverickgeek.xyz](https://totp.cf.maverickgeek.xyz) as a [Tor Onion Service](https://community.torproject.org/onion-services/).
+This playbook creates a bash script which can deploy [totp.maverickgeek.xyz](https://totp.maverickgeek.xyz) as a [Tor Onion Service](https://community.torproject.org/onion-services/).
 
 Demo: [http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion](http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion)
 
