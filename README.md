@@ -37,7 +37,15 @@ The target FreeBSD instance must have the labels `os: freebsd` and `tor_service:
 1. Create `inventory/google.gcp_compute.yml` based on `inventory/google.gcp_compute.yml.sample`,
     1. Specify the project ID
     1. Specify the zone where you have deployed your server on Google Cloud
-    1. Configure the authentication
+    1. Configure the authentication,
+        1. Application Default Credentials (`auth_kind: application`)
+            1. Import credentials from the Google Cloud Environment (e.g, Google Cloud Shell)
+            2. Import credentials from Google Cloud SDK if installed 
+        2. Service Account (`auth_kind: serviceaccount`)
+            1. Use a service account for authentication. Refer [cloud.google.com/docs/authentication/production#create_service_account](https://cloud.google.com/docs/authentication/production#create_service_account).
+            2. Set `service_account_file` to the credential file or `service_account_contents` to the json content
+        3. Machine Account (`auth_kind: machineaccount`)
+            1. When running on Compute Engine, use the service account attached to the instance
 1. Set username and SSH authentication in `inventory/group_vars/`
 1. Create `roles/tor/files/torrc` from `roles/tor/files/torrc.sample`
 
