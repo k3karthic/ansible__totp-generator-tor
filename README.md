@@ -33,7 +33,7 @@ $ ansible-galaxy collection install google.cloud
 
 The Google [Ansible Inventory Plugin](https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_inventory.html) populates public FreeBSD instances.
 
-The target FreeBSD instances must have the labels `os: freebsd` and `tor_service: yes`.
+The target FreeBSD instance must have the labels `os: freebsd` and `tor_service: yes`.
 
 ## Playbook Configuration
 
