@@ -2,7 +2,7 @@
 
 This playbook creates a bash script to deploy [totp.maverickgeek.xyz](https://totp.maverickgeek.xyz) as a [Tor Onion Service](https://community.torproject.org/onion-services/).
 
-Demo: [http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion](http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion)
+**TOTP Genarator Onion:** [totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion](http://totpmgx6wksbquraailhqzyaue6e6k47zcvvxkknsdm5puwavc4kegqd.onion)
 
 **Assumption:** The instance runs in Google Cloud using the Terraform script below,
 * terraform__gcloud-instance
