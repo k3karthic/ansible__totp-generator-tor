@@ -16,5 +16,5 @@ fi
 ##
 
 chmod 0644 index.html
-chown root:wheel index.html
-mv index.html /usr/local/www/nginx/index.html
+chown root:nogroup index.html
+mv index.html /var/www/index.html

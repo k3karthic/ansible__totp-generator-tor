@@ -7,6 +7,22 @@
     - nginx
     - wget
 
+- name: create www directory
+  ansible.builtin.file:
+    path: /var/www
+    state: directory
+    owner: root
+    group: nogroup
+    mode: '0755'
+
+- name: copy nginx config
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: /usr/local/etc/nginx/nginx.conf
+    owner: root
+    group: wheel
+    mode: "0644"
+
 - name: copy deploy script
   ansible.builtin.copy:
     src: deploy_totp_tor.sh
@@ -14,6 +30,11 @@
     owner: root
     group: wheel
     mode: "0755"
+
+- name: run deploy script
+  ansible.builtin.shell:
+    cmd: /usr/local/bin/deploy_totp_tor.sh
+    creates: /var/www/index.html
 
 - name: enable nginx on boot
   community.general.sysrc:
@@ -24,3 +45,11 @@
   ansible.builtin.service:
     name: nginx
     state: restarted
+
+- name: configure newsyslog
+  ansible.builtin.copy:
+    src: newsyslog.conf
+    dest: /etc/newsyslog.conf.d/nginx.conf
+    owner: root
+    group: wheel
+    mode: "0644"
