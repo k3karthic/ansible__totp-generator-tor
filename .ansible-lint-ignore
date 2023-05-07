@@ -1,0 +1,1 @@
+roles/nginx/tasks/main.yml command-instead-of-shell

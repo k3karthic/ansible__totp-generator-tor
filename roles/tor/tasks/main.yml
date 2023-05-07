@@ -1,5 +1,5 @@
 ---
-- name: install dependencies
+- name: Install dependencies
   community.general.pkgng:
     name: "{{ item }}"
     state: latest
@@ -7,14 +7,14 @@
     - tor
     - obfs4proxy-tor
 
-- name: randomize IP IDs
+- name: Randomize IP IDs
   ansible.posix.sysctl:
     name: net.inet.ip.random_id
     value: '1'
     state: present
     reload: true
 
-- name: create hidden dir
+- name: Create hidden dir
   ansible.builtin.file:
     path: /var/db/tor/hidden_service__totp
     state: directory
@@ -22,7 +22,7 @@
     group: _tor
     mode: "0700"
 
-- name: create hidden dir auth clients
+- name: Create hidden dir auth clients
   ansible.builtin.file:
     path: /var/db/tor/hidden_service__totp/authorized_clients
     state: directory
@@ -30,7 +30,7 @@
     group: _tor
     mode: "0700"
 
-- name: copy public key
+- name: Copy public key
   ansible.builtin.copy:
     src: hidden_service__totp/hs_ed25519_public_key
     dest: /var/db/tor/hidden_service__totp/hs_ed25519_public_key
@@ -38,7 +38,7 @@
     group: _tor
     mode: "0600"
 
-- name: copy secret key
+- name: Copy secret key
   ansible.builtin.copy:
     src: hidden_service__totp/hs_ed25519_secret_key
     dest: /var/db/tor/hidden_service__totp/hs_ed25519_secret_key
@@ -46,7 +46,7 @@
     group: _tor
     mode: "0600"
 
-- name: cofigure tor
+- name: Cofigure tor
   ansible.builtin.copy:
     src: torrc
     dest: /usr/local/etc/tor/torrc
@@ -54,17 +54,17 @@
     group: wheel
     mode: "0644"
 
-- name: enable tor on boot
+- name: Enable tor on boot
   community.general.sysrc:
     name: tor_enable
     value: "YES"
 
-- name: restart tor
+- name: Restart tor
   ansible.builtin.service:
     name: tor
     state: restarted
 
-- name: configure newsyslog
+- name: Configure newsyslog
   ansible.builtin.copy:
     src: newsyslog.conf
     dest: /etc/newsyslog.conf.d/tor.conf
